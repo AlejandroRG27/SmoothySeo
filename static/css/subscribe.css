@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+@font-face {
+  font-family: 'SugarPieW00-Regular';
+  src: url('/static/fonts/SugarPieW00-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+    margin-top: 1%;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to top, rgb(20, 106, 204) 0%, #50C878 100%);
+    min-height: 97vh; 
+    width: 100%;
+    opacity: 0.99;
+}
+
+html {
+    height: 100vh; 
+    margin-top: 1%;
+    padding: 0;
+}
+.h1-tarifas{
+    font-family: 'SugarPieW00-Regular';
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F5F6F5;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.pricing-container:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+.pricing-card {
+    border: none;
+    border-radius: 10px;
+    background-color: #F5F6F5;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    height: 30%;
+}
+.pricing-card:hover {
+    transform: translateY(-5px);
+}
+.card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: #1A3C6D;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 15px;
+}
+.pro-card {
+    background-color: #F0F8F3; 
+    border: 2px solid #50C878; 
+    position: relative;
+    z-index: 1;
+}
+.badge-recommended {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #50C878;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: #50C878;
+    margin-bottom: 20px;
+}
+.btn-subscribe {
+    background-color: #50C878;
+    border-color: #50C878;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+.btn-subscribe:hover {
+    background-color: #3DA65E;
+    border-color: #3DA65E;
+}
+.current-plan {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #1A3C6D;
+    font-family: 'Roboto', sans-serif;
+}
+.error {
+    color: red;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+.btn-pro {
+    background-color: #1A3C6D; 
+    border-color: #1A3C6D;
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .pricing-card {
+        padding: 15px;
+    }
+    .badge-recommended {
+        top: -5px;
+        right: -5px;
+    }
+}

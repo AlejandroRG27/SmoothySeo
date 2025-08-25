@@ -1,0 +1,297 @@
+
+.blog-header {
+    margin-bottom: 30px;
+    padding: 40px 0;
+    background: linear-gradient(45deg, #f0f0f0, #007bff);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.h1-smooth-blog {
+    font-family: 'SugarPieW00-Regular', sans-serif;
+    font-size: 2.8rem;
+    color: #e0e0e0;
+    -webkit-text-stroke: 2px #333;
+}
+
+.h2-smooth-blog {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: black;
+    padding: 20px;
+}
+
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-sm:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.blog-content {
+    background-color: #d2b48c;  
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='%23a0522d' fill-opacity='0.1'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='3' cy='10' r='1'/%3E%3Ccircle cx='3' cy='17' r='1'/%3E%3Ccircle cx='10' cy='3' r='1'/%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3Ccircle cx='10' cy='17' r='1'/%3E%3Ccircle cx='17' cy='3' r='1'/%3E%3Ccircle cx='17' cy='10' r='1'/%3E%3Ccircle cx='17' cy='17' r='1'/%3E%3C/g%3E%3C/svg%3E");  /* Patrón de puntos para textura de corcho */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100vw;  
+    margin-left: calc(-50vw + 50%);  
+    padding: 40px 20px;  
+}
+
+
+.post-it {
+    background-color: #fff9c4;  
+    border: 1px solid #f0e68c;  
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;  
+    transform: rotate(1deg);  
+    padding: 20px;
+}
+
+.post-it:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.post-it::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ff0000 40%, #cc0000 70%);  
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.post-it::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 10px;
+    background: #808080;  
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+.featured-article {
+    transform: rotate(-1deg);  
+    padding: 30px;
+}
+
+.featured-article .card-title {
+    font-size: 2.5rem;
+    color: #007bff;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.featured-article .card-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    font-style: italic;
+}
+
+.featured-article .card-text {
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 20px;
+}
+
+
+.preview-post-it {
+    transform: rotate(2deg);
+}
+
+.preview-post-it .card-title {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.preview-post-it .card-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.preview-post-it .card-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+
+.card-post-it {
+    transform: rotate(-2deg);
+}
+
+.card-post-it .card-title {
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.card-post-it .card-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.card-post-it .card-text {
+    font-size: 0.95rem;
+    color: #777;
+}
+
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    border-radius: 20px;
+    padding: 50px 20px;
+    margin: 40px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+
+.blog-header {
+    background-color: #f5f6f5;
+}
+
+
+.modal-dialog.modal-xl {
+    max-width: 80%; 
+}
+
+.modal-content.post-it.modal-post-it {
+    background-color: #fff9c4;  
+    border: 1px solid #f0e68c;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: rotate(0deg);  
+    padding: 50px;
+}
+
+.modal-content.post-it.modal-post-it .modal-header {
+    border-bottom: none;
+    padding: 0;
+}
+
+.modal-content.post-it.modal-post-it .modal-title {
+    font-size: 2.5rem;
+    color: #007bff;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.modal-content.post-it.modal-post-it .text-muted {
+    font-size: 1.5rem;
+    color: #666;
+    font-style: italic;
+}
+
+.modal-content.post-it.modal-post-it .modal-text {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.8;
+    margin-top: 20px;
+    white-space: pre-line;  
+    word-wrap: break-word;
+}
+
+.modal-content.post-it.modal-post-it::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ff0000 40%, #cc0000 70%);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.modal-content.post-it.modal-post-it::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 15px;
+    background: #808080;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content.post-it.modal-post-it .modal-footer {
+    border-top: none;
+    padding: 20px 0 0;
+    justify-content: center;
+}
+
+/* Responsive (mantenido) */
+@media (max-width: 768px) {
+    .blog-header .smoothly-blob {
+        padding: 20px 0;
+    }
+    .h1-smooth-blog {
+        font-size: 2rem;
+    }
+    .h2-smooth-blog {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+    .featured-article .card-title {
+        font-size: 1.8rem;
+    }
+    .article-preview .card-title, .card-post-it .card-title {
+        font-size: 1.3rem;
+    }
+    .cta-section {
+        padding: 30px 10px;
+    }
+    .modal-dialog.modal-xl {
+        max-width: 95%;
+    }
+    .modal-content.post-it.modal-post-it .modal-title {
+        font-size: 1.8rem;
+    }
+    .modal-content.post-it.modal-post-it .text-muted {
+        font-size: 1.2rem;
+    }
+    .modal-content.post-it.modal-post-it .modal-text {
+        font-size: 1rem;
+    }
+    .modal-content.post-it.modal-post-it::before {
+        width: 25px;
+        height: 25px;
+    }
+    .modal-content.post-it.modal-post-it::after {
+        width: 5px;
+        height: 12px;
+    }
+}
