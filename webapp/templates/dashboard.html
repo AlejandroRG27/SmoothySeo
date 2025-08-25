@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_deux_tags %}
+{% load custom_filters %}
+{% load url_utils %}
+
+{% block title %}Informe SEO - SmoothlySEO{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Plan del usuario -->
+    <div class="alert alert-info d-flex justify-content-between align-items-center mb-3">
+        <span>Plan actual: {{ subscription.plan.nome|title }}</span>
+        {% if plan_name == 'free' %}
+            <a href="{% url 'pricing' %}" class="btn btn-primary btn-sm">Actualizar plan</a>
+        {% endif %}
+    </div>
+    <h1 class="h2 mb-3">{{ informe.url }}</h1>
+    <div class="mb-4 date-section">
+        <small class="text-muted date-text">Fecha: {{ informe.data|date:"d/m/Y" }}</small>
+    </div>
+
+    <!-- Row for Screenshot and Score -->
+    <div class="row mb-4 seccion-screen-score">
+        <div class="col-md-5">
+            <!-- Screenshot -->
+            {% if informe.screenshot %}
+                <div class="laptop-frame">
+                    <div class="screen">
+                        <img src="{{ informe.screenshot }}" alt="Screenshot de {{ informe.url }}" class="desktop-screenshot">
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-7">
+            <!-- Puntuación general -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h2 class="mb-0">Puntuación de análisis web: {{ informe.puntuacion }}/100</h2>
+                </div>
+                <div class="card-body">
+                    <div class="progress mb-4" style="height: 20px;">
+                        <div class="progress-bar 
+                            {% if informe.puntuacion < 40 %}bg-danger
+                            {% elif informe.puntuacion < 70 %}bg-warning
+                            {% else %}bg-success{% endif %}" 
+                            role="progressbar" style="width: {{ informe.puntuacion }}%;" 
+                            aria-valuenow="{{ informe.puntuacion }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ informe.puntuacion }}%
+                        </div>
+                    </div>
+                    <!-- Filters -->
+                    <ul class="nav nav-pills mb-4" style="list-style: none;">
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-success filter-btn" data-status="good">Buenas prácticas</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-warning filter-btn" data-status="neutral">Para Mejorar</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-danger filter-btn" data-status="bad">Errores</button>
+                        </li>
+                    </ul>
+                    <!-- Mini barras de progreso -->
+                    <div class="mini-progress-bars">
+                        <div class="progress-item">
+                            <span class="progress-label">Buenas prácticas: {{ status_counts.good|default:0 }}</span>
+                            <div class="progress mb-2" style="height: 20px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ status_counts.good|default:0 }}%;" aria-valuenow="{{ status_counts.good|default:0 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-label">Para Mejorar: {{ status_counts.neutral|default:0 }}</span>
+                            <div class="progress mb-2" style="height: 20px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ status_counts.neutral|default:0 }}%;" aria-valuenow="{{ status_counts.neutral|default:0 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-label">Errores: {{ status_counts.bad|default:0 }}</span>
+                            <div class="progress mb-2" style="height: 20px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ status_counts.bad|default:0 }}%;" aria-valuenow="{{ status_counts.bad|default:0 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if plan_name == 'PRO' %}
+    <!-- Buttons -->
+    <div class="d-flex justify-content-start mb-4">
+        <a href="{% url 'download_pdf' informe.id %}" class="btn btn-primary me-2">Descargar PDF</a>
+    </div>
+    {% endif %}
+
+    <div class="tab-content" id="dashboardTabContent">
+        {% block tab_content %}{% endblock %}
+    </div>
+
+    <!-- Pestañas para navegación -->
+    <ul class="nav nav-tabs mb-4" id="dashboardTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="problems-tab" data-bs-toggle="tab" href="#problems" role="tab">Problemas Detectados</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="ai-advice-tab" data-bs-toggle="tab" href="#ai-advice" role="tab">Análisis IA</a>
+        </li>
+
+    </ul>
+
+    <div class="tab-content" id="dashboardTabContent">
+        <!-- Problemas Detectados -->
+        <div class="tab-pane fade show active" id="problems" role="tabpanel">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    {% if sectioned_problemas %}
+                        {% for section, problems in sectioned_problemas.items %}
+                            <h3 class="mt-4">{{ section }}</h3>
+                            <div class="accordion" id="problemsAccordion_{{ section|slugify }}">
+                                {% for name, details in problems.items %}
+                                    <div class="accordion-item mb-2 problem-item" data-status="{{ details.status|lower|default:'neutral' }}">
+                                        <h2 class="accordion-header {{ details.status|lower|default:'neutral' }}-header" id="heading-{{ name|slugify }}">
+                                            <button class="accordion-button collapsed status-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ name|slugify }}_{{ section|slugify }}" aria-expanded="false" aria-controls="collapse-{{ name|slugify }}_{{ section|slugify }}" data-status="{{ details.status|lower|default:'neutral' }}">
+                                                <span>
+                                                    <i class="bi {% if details.status|lower == 'good' %}bi-check-circle-fill{% elif details.status|lower == 'average' %}bi-exclamation-triangle-fill{% elif details.status|lower == 'bad' %}bi-x-circle-fill{% else %}bi-info-circle-fill{% endif %} me-2"></i>
+                                                    <strong class="title-strong">{{ name|title }}</strong>
+                                                    <span class="badge bg-{{ details.status|lower|default:'neutral' }}-subtle text-{{ details.status|lower|default:'neutral' }}-emphasis ms-2">
+                                                        {% if details.status|lower == 'good' %}Buena práctica
+                                                        {% elif details.status|lower == 'average' %}Para Mejorar
+                                                        {% elif details.status|lower == 'bad' %}Errores
+                                                        {% else %}Neutral{% endif %}
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </h2>
+                                        <!-- Datos siempre visibles -->
+                                        {% if details.data %}
+                                            <div class="p-3 data-section">
+                                                <h5 class="data-title">Datos:</h5>
+                                                {% if details.data|is_dict %}
+                                                    <dl class="row data-list">
+                                                        {% for pair in details.data|items %}
+                                                            {% if pair.0|lower == 'src' or pair.0|lower == 'href' or pair.0|lower == 'link' or pair.0|lower == 'url' %}
+                                                                <dt class="col-sm-3">{{ pair.0|title }}</dt>
+                                                                <dd class="col-sm-9"><a href="{{ pair.1|default:'' }}" target="_blank" class="data-link">{{ pair.1|default:''|truncatechars:50 }}</a></dd>
+                                                            {% elif pair.0|lower == 'nodelabel' or pair.0|lower == 'value' %}
+                                                                <dt class="col-sm-3">{{ pair.0|title }}</dt>
+                                                                <dd class="col-sm-9">{{ pair.1|safe }}</dd>
+                                                            {% else %}
+                                                                <dt class="col-sm-3">{{ pair.0|title }}</dt>
+                                                                <dd class="col-sm-9">{{ pair.1|safe }}</dd>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </dl>
+                                                {% elif details.data|is_list %}
+                                                    <ul class="list-group list-group-flush">
+                                                        {% for item in details.data|slice:":5" %}
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                {% if item|is_dict %}
+                                                                    {% with url=item|lookup:'url'|default:item|lookup:'src'|default:item|lookup:'href'|default:item|lookup:'link' %}
+                                                                        {% if url and url != '' %}
+                                                                            <a href="{{ url }}" target="_blank" class="data-link">{{ url|truncatechars:50 }}</a>
+                                                                        {% elif item|lookup:'nodelabel' and item|lookup:'nodelabel' != '' %}
+                                                                            <span>{{ item|lookup:'nodelabel'|safe }}</span>
+                                                                        {% elif item|lookup:'value' and item|lookup:'value' != '' %}
+                                                                            <span>{{ item|lookup:'value'|safe }}</span>
+                                                                        {% else %}
+                                                                            <span>{{ item|safe }}</span>
+                                                                        {% endif %}
+                                                                    {% endwith %}
+                                                                {% elif item|is_url %}
+                                                                    <a href="{{ item }}" target="_blank" class="data-link">{{ item|truncatechars:50 }}</a>
+                                                                {% else %}
+                                                                    <span>{{ item|safe }}</span>
+                                                                {% endif %}
+                                                                {% if item|lookup:'wastedBytes' or item|lookup:'sizeBefore' or item|lookup:'sizeAfter' %}
+                                                                    <span class="badge bg-secondary">{{ item|lookup:'wastedBytes'|default:'0' }} bytes perdidos</span>
+                                                                {% endif %}
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% if details.data|length > 5 %}
+                                                        <button class="btn btn-link show-more-btn" onclick="showMore(this)">Mostrar más</button>
+                                                        <div class="more-items" style="display: none;">
+                                                            <ul class="list-group list-group-flush">
+                                                                {% for item in details.data|slice:"5:" %}
+                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        {% if item|is_dict %}
+                                                                            {% with url=item|lookup:'url'|default:item|lookup:'src'|default:item|lookup:'href'|default:item|lookup:'link' %}
+                                                                                {% if url and url != '' %}
+                                                                                    <a href="{{ url }}" target="_blank" class="data-link">{{ url|truncatechars:50 }}</a>
+                                                                                {% elif item|lookup:'nodelabel' and item|lookup:'nodelabel' != '' %}
+                                                                                    <span>{{ item|lookup:'nodelabel'|safe }}</span>
+                                                                                {% elif item|lookup:'value' and item|lookup:'value' != '' %}
+                                                                                    <span>{{ item|lookup:'value'|safe }}</span>
+                                                                                {% else %}
+                                                                                    <span>{{ item|safe }}</span>
+                                                                                {% endif %}
+                                                                            {% endwith %}
+                                                                        {% elif item|is_url %}
+                                                                            <a href="{{ item }}" target="_blank" class="data-link">{{ item|truncatechars:50 }}</a>
+                                                                        {% else %}
+                                                                            <span>{{ item|safe }}</span>
+                                                                        {% endif %}
+                                                                        {% if item|lookup:'wastedBytes' or item|lookup:'sizeBefore' or item|lookup:'sizeAfter' %}
+                                                                            <span class="badge bg-secondary">{{ item|lookup:'wastedBytes'|default:'0' }} bytes perdidos</span>
+                                                                        {% endif %}
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <p>{{ details.data|safe }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                        <div id="collapse-{{ name|slugify }}_{{ section|slugify }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ name|slugify }}" data-bs-parent="#problemsAccordion_{{ section|slugify }}">
+                                            <div class="accordion-body problem-content">
+                                                {% if details.advice %}
+                                                    <p>{{ details.advice|safe }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-success d-flex align-items-center">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <span><strong>Éxito:</strong> No se detectaron problemas específicos.</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Consejo IA -->
+        <div class="tab-pane fade" id="ai-advice" role="tabpanel">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-light" data-bs-toggle="collapse" data-bs-target="#aiAdviceCollapse" aria-expanded="true" aria-controls="aiAdviceCollapse" style="cursor: pointer;">
+                    <h4 class="d-flex justify-content-between align-items-center mb-0">
+                        <i class="bi bi-lightbulb-fill me-2"></i>Consejo IA
+                    </h4>
+                </div>
+                <div class="card-body text-dark">
+                    {% if informe.consello_ia %}
+                        {{ informe.consello_ia|markdown|safe }}
+                    {% else %}
+                        <p class="text-muted"><i class="bi bi-info-circle me-2"></i>No disponible</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Razonamiento -->
+        <div class="tab-pane fade" id="reasoning" role="tabpanel">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-light" data-bs-toggle="collapse" data-bs-target="#reasoningCollapse" aria-expanded="true" aria-controls="reasoningCollapse" style="cursor: pointer;">
+                    <h4 class="d-flex justify-content-between align-items-center mb-0">
+                        <i class="bi bi-gear-fill me-2"></i>Razonamiento
+                    </h4>
+                </div>
+                <div class="card-body text-dark">
+                    {% if informe.razonamiento %}
+                        {{ informe.razonamiento|markdown|safe }}
+                    {% else %}
+                        <p class="text-muted"><i class="bi bi-info-circle me-2"></i>No disponible</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/chart.min.js' %}"></script>
+    <script src="{% static 'js/dashboard_charts.js' %}"></script>
+    <script>
+        function showMore(btn) {
+            btn.nextElementSibling.style.display = 'block';
+            btn.style.display = 'none';
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const status = btn.dataset.status;
+                document.querySelectorAll('.problem-item').forEach(item => {
+                    if (status === 'all' || item.dataset.status === status) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}

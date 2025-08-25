@@ -1,0 +1,10 @@
+<h1>Registros</h1>
+{% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">Registrarse</button>
+</form>

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tarifas - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <h1 class="text-center py-4 h1-tarifas">Planes de precios</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if current_plan and request.user.is_authenticated %}
+        <p class="current-plan">Tu plan actual: <strong>{{ current_plan|title }}</strong></p>
+    {% endif %}
+
+    <div class="pricing-container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Plan Free</h5>
+                        <p class="card-text">1 consulta diaria</p>
+                        <p class="card-text">Sin descargas en PDF</p>
+                        <h4 class="price"><strong>Gratis</strong></h4>
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url 'auth' %}?next={% url 'subscribe' %}" class="btn btn-success btn-subscribe">Suscribirse</a>
+                        {% else %}
+                            <a href="{% url 'manage_subscription' %}" class="btn btn-primary">Gestionar suscripción</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Plan Standard</h5>
+                        <p class="card-text">3 consultas diarias</p>
+                        <p class="card-text">Descargas en PDF</p>
+                        <h4 class="price"><strong>$5/mes</strong></h4>
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url 'auth' %}?next={% url 'subscribe' %}" class="btn btn-success btn-subscribe">Suscribirse</a>
+                        {% else %}
+                            <a href="{% url 'manage_subscription' %}" class="btn btn-primary">Gestionar suscripción</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card h-100 pro-card">
+                    <div class="card-body text-center">
+                        <span class="badge badge-recommended">Recomendado</span>
+                        <h5 class="card-title">Plan Pro</h5>
+                        <p class="card-text">Consultas ilimitadas</p>
+                        <p class="card-text">Descargas en PDF</p>
+                        <h4 class="price"><strong>$20/mes</strong></h4>
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url 'auth' %}?next={% url 'subscribe' %}" class="btn btn-success btn-subscribe">Suscribirse</a>
+                        {% else %}
+                            <a href="{% url 'manage_subscription' %}" class="btn btn-primary">Gestionar suscripción</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/subscribe.css' %}">
+{% endblock %}

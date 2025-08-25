@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SmoothlySEO - Optimiza tu Sitio Web{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="SmoothlySEO: Analiza y optimiza tu sitio web con herramientas SEO avanzadas. Mejora tu posicionamiento en buscadores.">
+    <meta name="keywords" content="SEO, análisis web, optimización web, SmoothlySEO, posicionamiento">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Alejandro Rodríguez Gómez">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section position-relative d-flex min-vh-100">
+    <div class="custom-container">
+        <div class="row align-items-center">
+            <!-- Texto a la izquierda -->
+            <div class="col-md-6 left-expanded">
+                <h1 class="mb-4" style="font-family: 'SugarPieW00-Regular', cursive; color:rgb(20, 106, 204);">Tu aliado de SEO con IA</h1>
+                <h2 class="mb-4" style="font-family: 'Roboto', sans-serif; color: #F5F6F5;">Optimiza tu web con inteligencia artificial sin gastar una fortuna</h2>
+                <p class="lead mb-4" style="font-family: 'Open Sans', sans-serif; color: black;">SmoothlySEO es como un amigo que te ayuda a mejorar tu web. Con nuestra IA, obtienes informes SEO sencillos y consejos prácticos a bajo costo. Regístrate gratis y, si quieres más, suscríbete por solo 5€ o 20€ al mes. ¡El SEO nunca fue tan fácil!</p>
+            </div>
+            <!-- Imagen a la derecha -->
+            <div class="col-md-6 right-expanded text-end">
+                <img src="{% static 'images/header-ia.png' %}" alt="SEO optimización con IA" class="img-fluid hero-right-image">
+            </div>
+            <div class="boton-buscar-header text-center align-items-center">
+                    <a href="{% url 'overview' %}" class="btn btn-primary btn-xl">Analizar Ahora</a>
+                    <h3 class="mt-4" style="font-family: 'SugarPieW00-Regular', cursive;">Te ayudamos a subir tu posicionamiento web</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Imagen de fondo -->
+    <div class="background-image" style="background-image: url('{% static 'images/header-back.png' %}');"></div>
+</section>
+<div class="container mt-5">
+    <!-- Características -->
+    <section class="mb-5 caracteristicas-seccion">
+        <h2 class="mb-4 text-center">Nuestras Ventajas</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-search display-4"></i>
+                        <h3 class="card-title mt-3">Análisis Completo</h3>
+                        <p class="card-text">Identifica problemas SEO con informes detallados y accionables.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-rocket-takeoff display-4"></i>
+                        <h3 class="card-title mt-3">Optimización Fácil</h3>
+                        <p class="card-text">Recibe consejos de IA para mejorar tu rendimiento web.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up display-4"></i>
+                        <h3 class="card-title mt-3">Resultados Rápidos</h3>
+                        <p class="card-text">Mejora tu ranking en buscadores rápidamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Características de IA -->
+<section class="ai-section">
+    <div class="container container-ia">
+        <div class="row align-items-center">
+            <div class="col-md-6 ai-content">
+                <h2>Inteligencia Artificial Avanzada</h2>
+                <p class="lead">Obtén un informe detallado de tu web y deja que nuestra IA genere soluciones personalizadas para optimizar tu SEO.</p>
+            </div>
+            <div class="col-md-6 text-end imagen-seccion-ia">
+                <img src="{% static 'images/seccion-ia.png' %}" alt="IA analizando SEO" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Análisis Interactivo -->
+<section class="interactive-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Cómo Mejoramos Tu Web</h2>
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <div class="feature-list">
+                    <div class="feature-item" data-image="seo">
+                        <h3>Análisis SEO</h3>
+                        <p>Escaneamos keywords y optimizamos con estrategias personalizadas.</p>
+                    </div>
+                    <div class="feature-item" data-image="accessibility">
+                        <h3>Accesibilidad</h3>
+                        <p>Ajustamos tu web a estándares WCAG con mejoras automáticas.</p>
+                    </div>
+                    <div class="feature-item" data-image="performance">
+                        <h3>Rendimiento</h3>
+                        <p>Optimizamos velocidad y código para cargas rápidas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="feature-image">
+                    <img src="{% static 'images/seo-image.png' %}" alt="Análisis SEO" class="img-fluid feature-img active" data-key="seo">
+                    <img src="{% static 'images/accessibility-image.png' %}" alt="Accesibilidad" class="img-fluid feature-img" data-key="accessibility">
+                    <img src="{% static 'images/performance-image.jpg' %}" alt="Rendimiento" class="img-fluid feature-img" data-key="performance">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content text-center py-5">
+            <h2 class="mb-4">Comienza a mejorar tu sitio web de manera gratuita!</h2>
+            <p class="lead mb-4">Elige la tarifa que mejor se adapte a ti.</p>
+            <a href="{% url 'subscribe' %}" class="btn btn-primary btn-lg me-2 cta-green">Elige tu tarifa</a>
+            <a href="{% url 'overview' %}" class="btn btn-outline-primary btn-lg cta-outline">Analiza gratis</a>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}

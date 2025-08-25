@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <!-- Sección de Cabecera -->
+    <section class="blog-header py-5">
+        
+            <div class="smoothly-blob text-center">
+                <h1 class="h1-smooth-blog">Smoothly Blog</h1>
+                <h2 class="h2-smooth-blog">Noticias sobre posicionamiento web</h2>
+            </div>
+            {% if user.is_authenticated and user.tipo_usuario == 'admin' %}
+                <div class="text-end mb-4">
+                    <a href="{% url 'articulo_nuevo' %}" class="btn btn-primary btn-sm">Crear nuevo artículo</a>
+                </div>
+            {% endif %}
+        
+    </section>
+
+    <!-- Sección de Contenido -->
+    <section class="blog-content py-5 corkboard-bg">
+        <div class="container">
+            <!-- Primera entrada (destacada) - Una columna -->
+            {% if articulos|length > 0 %}
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="post-it featured-post-it" onclick="openModal('{{ articulos.0.titulo|escapejs }}', '{{ articulos.0.subtitulo|default:""|escapejs }}', '{{ articulos.0.cuerpo|safe|escapejs }}')">
+                            <div class="post-it-content text-center p-4">
+                                <h2 class="card-title mb-3">{{ articulos.0.titulo }}</h2>
+                                {% if articulos.0.subtitulo %}
+                                    <h4 class="card-subtitle mb-2 text-muted">{{ articulos.0.subtitulo }}</h4>
+                                {% endif %}
+                                <p class="card-text">Haz clic para leer el artículo completo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dos entradas siguientes - Dos columnas -->
+                {% if articulos|length > 1 %}
+                    <div class="row g-4 mb-5">
+                        {% for articulo in articulos|slice:"1:3" %}
+                            <div class="col-md-6">
+                                <div class="post-it preview-post-it" onclick="openModal('{{ articulo.titulo|escapejs }}', '{{ articulo.subtitulo|default:""|escapejs }}', '{{ articulo.cuerpo|safe|escapejs }}')">
+                                    <div class="post-it-content text-center p-3">
+                                        <h5 class="card-title mb-2">{{ articulo.titulo }}</h5>
+                                        {% if articulo.subtitulo %}
+                                            <h6 class="card-subtitle mb-1 text-muted">{{ articulo.subtitulo }}</h6>
+                                        {% endif %}
+                                        <p class="card-text">Explora este tema en detalle.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Llamada a la acción -->
+                <div class="cta-section text-center py-5 mb-5">
+                    <h3 class="cta-title">¡Suscríbete para más contenido!</h3>
+                    <p class="cta-text">Únete a nuestra comunidad y recibe las últimas noticias y curiosidades.</p>
+                    <a href="{% url 'subscribe' %}" class="btn btn-success btn-lg">Suscríbete ahora</a>
+                </div>
+
+                <!-- Resto de los artículos - Tres columnas -->
+                <div class="row g-4">
+                    {% for articulo in articulos|slice:"3:" %}
+                        <div class="col-md-4">
+                            <div class="post-it card-post-it" onclick="openModal('{{ articulo.titulo|escapejs }}', '{{ articulo.subtitulo|default:""|escapejs }}', '{{ articulo.cuerpo|safe|escapejs }}')">
+                                <div class="post-it-content text-center p-3">
+                                    <h5 class="card-title mb-2">{{ articulo.titulo }}</h5>
+                                    {% if articulo.subtitulo %}
+                                        <h6 class="card-subtitle mb-1 text-muted">{{ articulo.subtitulo }}</h6>
+                                    {% endif %}
+                                    <p class="card-text">Haz clic para leer más.</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center no-articles">No hay artículos disponibles.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Modal con estilo de post-it -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content post-it modal-post-it">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <h6 id="modalSubtitle" class="text-muted mb-3"></h6>
+                    <div id="modalContent" class="modal-text"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openModal(title, subtitle, content) {
+            const modalTitle = document.getElementById('blogModalLabel');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const modalContent = document.getElementById('modalContent');
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle || '';
+            modalContent.innerHTML = content;
+            const modal = new bootstrap.Modal(document.getElementById('blogModal'));
+            modal.show();
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block title %}Autenticación - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <div class="body-form-reggister">
+        <h1 class="text-center py-4 textoh1-form">Bienvenido a SmoothlySEO</h1>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <div class="auth-container contenedor-registro">
+            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup">Registrarse</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <!-- Pestaña de Inicio de Sesión -->
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <div class="social-login mt-3 text-center">
+                        <a href="{% provider_login_url 'google' %}?next={{ request.GET.next|default:'/overview/' }}" class="btn btn-block">
+                            Continuar con Google
+                        </a>
+                        <div class="separator"><span>or</span></div>
+                    </div>
+                    <form method="post" action="{% url 'auth' %}" class="login-background">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.GET.next|default:'/overview/' }}">
+                        <input type="hidden" name="login" value="1">
+                        {% for field in login_form %}
+                            {% if field.name == 'username' %}
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">Email</label>
+                                    <input type="email" name="email" id="{{ field.id_for_label }}" value="{{ field.value|default:'' }}" class="form-control {% if field.errors %}is-invalid{% endif %}" required>
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% elif field.name == 'password' %}
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">Contraseña</label>
+                                    {{ field }}
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="remember_me" name="remember_me">
+                            <label class="custom-control-label" for="remember_me">Recuérdame</label>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>
+                        <a href="{% url 'account_reset_password' %}" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </form>
+                </div>
+
+                <!-- Pestaña de Registro -->
+                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                    <div class="social-login mt-3 text-center">
+                        <a href="{% provider_login_url 'google' %}?next={{ request.GET.next|default:'/overview/' }}" class="btn btn-block">
+                            Continuar con Google
+                        </a>
+                        <div class="separator"><span>or</span></div>
+                    </div>
+                    <form method="post" action="{% url 'auth' %}" class="signup-background">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.GET.next|default:'/overview/' }}">
+                        <input type="hidden" name="register" value="1">
+                        {% for field in signup_form %}
+                            {% if field.name == 'email' %}
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">Email</label>
+                                    {{ field }}
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% elif field.name == 'password1' or field.name == 'password2' %}
+                                <div class="form-group password-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field }}
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                    <span class="password-tooltip" data-toggle="tooltip" title="La contraseña debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial (e.g., !@#$).">?</span>
+                                </div>
+                            {% elif field.name == 'terms' %}
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" name="terms" id="{{ field.id_for_label }}" class="custom-control-input {% if field.errors %}is-invalid{% endif %}" {% if field.field.required and not field.value %}required{% endif %}>
+                                    <label class="custom-control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% elif field.name == 'promotions' %}
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="promotions" id="{{ field.id_for_label }}" class="custom-control-input">
+                                    <label class="custom-control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="submit" class="btn btn-success btn-block">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .body-form-reggister{
+            padding-top: 3%;
+        }
+        .password-tooltip {
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+            font-size: 16px;
+            color: #007bff;
+        }
+        .password-tooltip:hover::after {
+            content: attr(title);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1;
+            white-space: nowrap;
+        }
+        .password-group {
+            position: relative;
+        }
+        .invalid-feedback {
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltips = document.querySelectorAll('.password-tooltip');
+            tooltips.forEach(tooltip => {
+                tooltip.addEventListener('mouseover', function() {
+                    this.style.color = '#0056b3';
+                });
+                tooltip.addEventListener('mouseout', function() {
+                    this.style.color = '#007bff';
+                });
+            });
+        });
+    </script>
+{% endblock %}

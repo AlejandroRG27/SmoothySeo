@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Centro de Ayuda - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <h1 class="text-center py-4">¿Cómo podemos ayudarte?</h1>
+
+        <!-- Tarjetas -->
+        <div class="row g-4">
+            <!-- Fila 1 -->
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Primeros pasos', 'Guía básica para empezar a usar SmoothlySEO y optimizar tu sitio web.', '<ol><li>Regístrate con tu email y crea una cuenta segura.</li><li>Accede al panel de control y configura tu perfil con los datos de tu sitio web.</li><li>Ingresa la URL de tu sitio en la herramienta de análisis para obtener un informe inicial.</li><li>Revisa las recomendaciones básicas y aplica los primeros ajustes sugeridos para optimizar tu SEO desde el inicio.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-rocket-takeoff" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Primeros pasos</h5>
+                        <p class="card-text">Guía básica para empezar a usar SmoothlySEO y optimizar tu sitio web.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Guías', 'Recursos detallados para dominar las funciones de SmoothlySEO.', '<ol><li>Consulta las guías en el apartado \'Recursos\' para aprender cada función.</li><li>Sigue los tutoriales paso a paso para analizar tu sitio con la herramienta de SEO.</li><li>Aplica las sugerencias de optimización y usa las métricas avanzadas para evaluar resultados.</li><li>Explora las secciones de rendimiento y accesibilidad para sacar el máximo partido, ajustando tu estrategia según los informes personalizados.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-book" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Guías</h5>
+                        <p class="card-text">Recursos detallados para dominar las funciones de SmoothlySEO.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Tipos de tarifas', 'Información sobre los planes disponibles en SmoothlySEO.', '<ol><li>Comienza con el plan Free para análisis básicos y 1 consulta diaria.</li><li>Actualiza a Estandar para 5 consultas diarias y herramientas avanzadas de optimización.</li><li>Elige Pro para consultas ilimitadas y soporte prioritario.</li><li>Compara beneficios en el panel de suscripción y selecciona el plan que mejor se adapte a tus necesidades de crecimiento SEO.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-currency-dollar" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Tipos de tarifas</h5>
+                        <p class="card-text">Información sobre los planes disponibles en SmoothlySEO.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 2 -->
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('SEO', 'Estrategias para mejorar tu posicionamiento en buscadores.', '<ol><li>Ingresa tu URL para un análisis inicial de palabras clave.</li><li>Aplica las sugerencias de optimización de títulos y meta descripciones.</li><li>Usa las herramientas de enlace interno para estructurar tu sitio.</li><li>Monitorea el progreso con informes regulares y ajusta tu estrategia para maximizar tu visibilidad en Google.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">SEO</h5>
+                        <p class="card-text">Estrategias para mejorar tu posicionamiento en buscadores.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Accesibilidad', 'Cómo hacer tu sitio accesible para todos los usuarios.', '<ol><li>Analiza tu sitio con nuestra herramienta de accesibilidad.</li><li>Corrige errores de contraste y etiquetas alt en imágenes.</li><li>Añade navegación por teclado según las recomendaciones.</li><li>Revisa los informes periódicos para asegurar cumplimiento y mejorar la experiencia para usuarios con discapacidades.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-universal-access" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Accesibilidad</h5>
+                        <p class="card-text">Cómo hacer tu sitio accesible para todos los usuarios.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Rendimiento', 'Optimización para mejorar la velocidad de tu web.', '<ol><li>Usa la herramienta de análisis de velocidad para detectar cuellos de botella.</li><li>Comprime imágenes y activa la caché según las sugerencias.</li><li>Reduce el código innecesario con las recomendaciones automáticas.</li><li>Evalúa los resultados en informes para mantener tu sitio rápido y eficiente.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-speedometer2" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Rendimiento</h5>
+                        <p class="card-text">Optimización para mejorar la velocidad de tu web.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 3 -->
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Pagespeed', 'Análisis y mejora con Google PageSpeed Insights.', '<ol><li>Conecta tu sitio a nuestra integración con Google PageSpeed.</li><li>Analiza las métricas de velocidad y usabilidad móvil.</li><li>Aplica las optimizaciones sugeridas como compresión y redirecciones.</li><li>Revisa los informes para mantener tu sitio alineado con los estándares de Google.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-bar-chart" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Pagespeed</h5>
+                        <p class="card-text">Análisis y mejora con Google PageSpeed Insights.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('¿Cómo funciona nuestra IA?', 'Explicación del funcionamiento de nuestra inteligencia artificial.', '<ol><li>Ingresa tu URL para que la IA realice un análisis profundo.</li><li>Revisa las recomendaciones personalizadas generadas automáticamente.</li><li>Aplica los consejos de SEO y rendimiento sugeridos.</li><li>Usa los informes de progreso para ajustar tu estrategia y maximizar los resultados con la inteligencia artificial.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-robot" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">¿Cómo funciona nuestra IA?</h5>
+                        <p class="card-text">Explicación del funcionamiento de nuestra inteligencia artificial.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('AEO', 'Optimización para motores de búsqueda basados en IA.', '<ol><li>Analiza tu contenido con nuestra herramienta de IA.</li><li>Ajusta palabras clave según las sugerencias para algoritmos avanzados.</li><li>Optimiza la estructura de tu sitio con las recomendaciones.</li><li>Monitorea el impacto en búsquedas dinámicas para mantenerte competitivo.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-gear" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">AEO</h5>
+                        <p class="card-text">Optimización para motores de búsqueda basados en IA.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 4 -->
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Posicionarse en IA', 'Estrategias para destacar en búsquedas con IA.', '<ol><li>Usa la herramienta de análisis de IA para evaluar tu sitio.</li><li>Optimiza contenido con palabras clave específicas para búsquedas inteligentes.</li><li>Aplica las sugerencias de estructura y enlaces.</li><li>Revisa los informes para liderar en resultados impulsados por inteligencia artificial.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-trophy" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Posicionarse en IA</h5>
+                        <p class="card-text">Estrategias para destacar en búsquedas con IA.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Engagement', 'Cómo aumentar el compromiso de tus usuarios.', '<ol><li>Analiza el comportamiento de usuarios con nuestras herramientas.</li><li>Añade contenido interactivo como formularios sugeridos.</li><li>Optimiza el diseño según las recomendaciones.</li><li>Evalúa los datos de retención para mantener a tus visitantes comprometidos.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Engagement</h5>
+                        <p class="card-text">Cómo aumentar el compromiso de tus usuarios.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card help-card" onclick="openModal('Interacción de usuarios', 'Mejora la experiencia de usuario en tu sitio.', '<ol><li>Usa la herramienta de análisis de usabilidad para evaluar tu sitio.</li><li>Ajusta la navegación con las sugerencias de diseño.</li><li>Implementa botones y enlaces optimizados.</li><li>Revisa los informes para garantizar una experiencia fluida y satisfactoria.</li></ol>')">
+                    <div class="card-body text-center">
+                        <i class="bi bi-hand-thumbs-up" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Interacción de usuarios</h5>
+                        <p class="card-text">Mejora la experiencia de usuario en tu sitio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Llamada a la acción -->
+    <div class="cta-section text-center py-5 mt-5">
+        <h3>¿Necesitas más ayuda?</h3>
+        <p>Contáctanos directamente para soporte personalizado.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-success btn-lg">Contactar ahora</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 id="modalSubtitle"></h6>
+                    <p id="modalContent"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/centro_ayuda.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterCards() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.help-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                card.style.display = title.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        function openModal(title, subtitle, content) {
+            const modalTitle = document.getElementById('helpModalLabel');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const modalContent = document.getElementById('modalContent');
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            modalContent.innerHTML = content; // Cambiado a innerHTML para renderizar HTML
+            const modal = new bootstrap.Modal(document.getElementById('helpModal'));
+            modal.show();
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}Características - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <!-- Cabecera -->
+    <section class="header-section py-5">
+        <div class="container">
+            <div class="row align-items-center seccion-header">
+                <div class="col-md-7">
+                    <h1 class="header-title">Descubre lo que SmoothlySEO puede hacer por ti</h1>
+                    <p class="header-subtitle">SEO con IA fácil, rápido y asequible</p>
+                    <a href="{% url 'overview' %}" class="btn btn-primary btn-lg cta-green">Prueba Ahora</a>
+                </div>
+                <div class="col-md-5 text-end">
+                    <img src="{% static 'images/header-caracteristicas.png' %}" alt="Características SEO" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Azul -->
+    <section class="blue-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static 'images/pantalla-1.png' %}" alt="Foto 1" class="img-fluid mb-3">
+                    <img src="{% static 'images/pantalla-2.png' %}" alt="Foto 2" class="img-fluid mb-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-9 seccion-texto">
+                            <p class="section-text">Informe WooRank: Puntuación 68/100, "El tiempo de carga es alto".</p><br>
+                            <p class="section-text">"Tu web está en 70/100, ¡no está mal! Pero tarda un poco en cargar. 
+                            Intenta reducir el tamaño de las imágenes (usa herramientas gratis 
+                            como TinyPNG) o quita cosas pesadas que no necesites. 
+                            Una web rápida hace que los visitantes se queden más tiempo."</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="{% static 'images/carac-ia.jpg' %}" alt="Pequeña foto" class="img-fluid imagen-ia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Verde -->
+    <section class="green-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <p class="small-text">Si eres PRO, descarga tus informes en PDF</p>
+                </div>
+                <div class="col-md-5 text-end">
+                    <div class="fake-button">Descargar en PDF</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Iconos -->
+    <section class="icon-section py-5">
+        <div class="container">
+            <h3 class="icon-section-title text-center">Informes SEO sencillos, prácticos y al alcance de todos</p>
+            <div class="row text-center seccion-iconos">
+                
+                <div class="col-md-4 ">
+                    <i class="bi bi-currency-dollar display-4"></i>
+                    <p class="icon-text">Para todos los bolsillos. 
+                    No te dejarás la cartera 
+                    mejorando tu web.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-robot display-4"></i>
+                    <p class="icon-text">Una IA especializada te 
+                    guiará en todo el proceso
+                    de optimización web.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-rocket-takeoff display-4"></i>
+                    <p class="icon-text">Verás como tu sitio web 
+                    despega y se coloca 
+                    entre las primeras posiciones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="photo-section py-5">
+        <div class="container">
+            <h3 class="photo-section-title text-center">Principales características</h3>
+            <div class="row">
+                <!-- Dos fotos cuadradas en paralelo como cards -->
+                <div class="col-md-6">
+                    <div class="card photo-card">
+                        <img src="{% static 'images/foto-cuadrado-1.png' %}" alt="Foto cuadrada 1" class="card-img-top photo-square">
+                        <div class="card-body">
+                            <p class="card-text photo-caption">La puntuación se muestra con una barra de porcentaje y con filtros para poder listar los errores de las fortalezas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card photo-card">
+                        <img src="{% static 'images/foto-cuadrado-2.png' %}" alt="Foto cuadrada 2" class="card-img-top photo-square">
+                        <div class="card-body">
+                            <p class="card-text photo-caption">La IA analiza la web y te recomienda las 10 palabras claves que mejor se ajustan al sitio web.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Foto rectangular 1 con texto encima como card -->
+                <div class="col-12 mt-4">
+                    <div class="card photo-card">
+                        <div class="card-body">
+                            <p class="card-text photo-caption-top">La IA proporciona una sección de recomendaciones para adicionales a los errores para poder sacar el máximo pontencial al posicionamiento web.</p>
+                        </div>
+                        <img src="{% static 'images/foto-rec-1.png' %}" alt="Foto rectangular 1" class="card-img-bottom photo-rect">
+                    </div>
+                </div>
+                <!-- Foto rectangular 2 con texto encima como card -->
+                <div class="col-12 mt-4">
+                    <div class="card photo-card">
+                        <div class="card-body">
+                            <p class="card-text photo-caption-top">Al final, se muestra un razonamiento donde se explican la priorización de los errores y las soluciones personalizadas.</p>
+                        </div>
+                        <img src="{% static 'images/foto-rec-2.png' %}" alt="Foto rectangular 2" class="card-img-bottom photo-rect">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/caracteristicas.css' %}">
+{% endblock %}

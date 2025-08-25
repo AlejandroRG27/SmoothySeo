@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - SmoothlySEO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container my-5 legal-page">
+        <h1 class="mb-4">Política de Privacidad</h1>
+        <p>En <strong>SmoothlySEO</strong>, nos comprometemos a proteger tu privacidad y a cumplir con la <strong>Ley Orgánica 3/2018, de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDPGD)</strong> y el <strong>Reglamento General de Protección de Datos (GDPR)</strong> en caso de aplicarse.</p>
+        <h4>Datos Recogidos</h4>
+        <p>Recopilamos los siguientes datos para prestar nuestros servicios:</p>
+        <ul>
+            <li><strong>Email:</strong> Obtenido a través de Google OAuth al registrarte.</li>
+            <li><strong>URLs analizadas:</strong> Proporcionadas por los usuarios para el análisis SEO.</li>
+        </ul>
+        <h4>Finalidad</h4>
+        <p>Estos datos se utilizan exclusivamente para:</p>
+        <ul>
+            <li>Ofrecer el servicio de optimización SEO.</li>
+            <li>Mejorar la funcionalidad y experiencia de la aplicación.</li>
+        </ul>
+        <h4>Almacenamiento y Seguridad</h4>
+        <p>Los datos se almacenan en una base de datos con contraseñas encriptadas por defecto mediante Django. Las conexiones se realizan mediante HTTPS para garantizar la seguridad. No compartimos tus datos con terceros, excepto con Stripe para procesar pagos, quien cumple con GDPR.</p>
+        <h4>Derechos de los Usuarios</h4>
+        <p>Tienes derecho a:</p>
+        <ul>
+            <li>Solicitar la modificación o eliminación de tus datos enviando un email a <a href="mailto:a23alejandrorg@iessanclemente.net">a23alejandrorg@iessanclemente.net</a>.</li>
+        </ul>
+        <h4>Eliminación de Datos</h4>
+        <p>Si cancelas tu cuenta, todos tus datos serán eliminados permanentemente de nuestra base de datos.</p>
+        <p>Para más detalles, consulta nuestro <a href="{% url 'aviso_legal' %}">Aviso Legal</a> y <a href="{% url 'politica_cookies' %}">Política de Cookies</a>.</p>
+    </div>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

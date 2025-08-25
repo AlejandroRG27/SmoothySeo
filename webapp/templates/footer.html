@@ -1,0 +1,53 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer-top bg-white py-4">
+        <div class="container">
+            <div class="row filas-footer">
+                <!-- Columna Empresa y Recursos -->
+                <div class="col-md-3 col-6 mb-3">
+                    <h5>Empresa y Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'caracteristicas' %}" class="text-decoration-none text-dark">Características</a></li>
+                        <li><a href="{% url 'subscribe' %}" class="text-decoration-none text-dark">Tarifas</a></li>
+                        <li><a href="{% url 'blog' %}" class="text-decoration-none text-dark">Blog</a></li>
+                        <li><a href="{% url 'quienes-somos' %}" class="text-decoration-none text-dark">Quienes somos</a></li>
+                    </ul>
+                </div>
+                <!-- Columna Soporte -->
+                <div class="col-md-3 col-6 mb-3">
+                    <h5>Soporte</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'centro_ayuda' %}" class="text-decoration-none text-dark">Centro de ayuda</a></li>
+                        <li><a href="{% url 'contacto' %}" class="text-decoration-none text-dark">Contacto</a></li>
+                    </ul>
+                </div>
+                <!-- Columna Redes Sociales -->
+                <div class="col-md-3 col-6 mb-3">
+                    <h5>Redes Sociales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark"><i class="bi bi-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark"><i class="bi bi-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    </ul>
+                </div>
+                <!-- Columna Políticas Legales -->
+                <div class="col-md-3 col-6 mb-3">
+                    <h5>Políticas Legales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'aviso_legal' %}" class="text-decoration-none text-dark">Aviso legal</a></li>
+                        <li><a href="{% url 'politica_privacidad' %}" class="text-decoration-none text-dark">Política de privacidad</a></li>
+                        <li><a href="{% url 'politica_cookies' %}" class="text-decoration-none text-dark">Política de cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom bg-light-gray py-3">
+        <div class="container d-flex align-items-center justify-content-center">
+            <img src="{% static 'images/logo.png' %}" alt="logo-smoothly" class="logo-footer me-3">
+            <p class="text-dark mb-0">© 2025 SmoothlySEO. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+

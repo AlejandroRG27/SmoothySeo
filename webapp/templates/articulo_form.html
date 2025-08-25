@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nuevo Artículo - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <h1 class="text-center py-4">Crear Nuevo Artículo</h1>
+    <div class="auth-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" name="titulo" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="subtitulo">Subtítulo (opcional)</label>
+                <input type="text" name="subtitulo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cuerpo">Cuerpo</label>
+                <textarea name="cuerpo" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen (opcional)</label>
+                <input type="file" name="imagen" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Guardar</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}

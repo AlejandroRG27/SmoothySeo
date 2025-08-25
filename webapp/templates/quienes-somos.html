@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Quiénes Somos - SmoothlySEO{% endblock %}
+
+{% block content %}
+    <!-- Cabecera degradada -->
+    <section class="header-section py-5">
+        <div class="header-content text-center text-white">
+            <h1 class="display-4 h1-quienes-somos">Conoce a SmoothlySEO</h1>
+            <h3 class="mb-3">Tu aliado en la optimización SEO con inteligencia artificial</h3>
+            <p class="lead">Descubre cómo nuestra tecnología transforma tu presencia online con soluciones innovadoras y accesibles.</p>
+        </div>
+    </section>
+
+    <!-- Sección con imagen de fondo y texto superpuesto -->
+    <section class="background-section py-5">
+        <div class="container position-relative">
+            <div class="background-image" style="background-image: url('{% static 'images/back-quienes.jpg' %}');"></div>
+            <div class="overlay-text p-4 text-center">
+                <h2 class="text-black">Nuestra Misión</h2>
+                <p class="text-black">En SmoothlySEO, nos dedicamos a empoderar a empresas y emprendedores con herramientas SEO avanzadas, haciendo que el posicionamiento web sea simple y efectivo mediante IA.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de iconos con valores diferenciales -->
+    <section class="icon-section py-5">
+        <div class="container">
+            <div class="row text-center cards-quienes">
+                <div class="col-md-4 mb-4">
+                    <div class="icon-card">
+                        <i class="bi bi-lightbulb-fill display-4 text-primary"></i>
+                        <h4>Innovación</h4>
+                        <p>Usamos IA de vanguardia para ofrecer análisis SEO únicos y personalizados.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-card">
+                        <i class="bi bi-shield-fill-check display-4 text-success"></i>
+                        <h4>Fiabilidad</h4>
+                        <p>Garantizamos resultados consistentes para mejorar tu ranking en buscadores.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-card">
+                        <i class="bi bi-wallet-fill display-4 text-warning"></i>
+                        <h4>Accesibilidad</h4>
+                        <p>Soluciones asequibles que se adaptan a cualquier presupuesto y con diferentes necesidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada a la acción de ancho completo -->
+    <section class="cta-section text-center py-5">
+        <h3 class="cta-title">¡Únete a la revolución SEO hoy!</h3>
+        <p class="cta-text">Prueba nuestras herramientas y lleva tu sitio web al siguiente nivel.</p>
+        <a href="{% url 'overview' %}" class="btn btn-success btn-lg">Comienza ahora</a>
+    </section>
+{% include 'footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/quienes_somos.css' %}">
+{% endblock %}
