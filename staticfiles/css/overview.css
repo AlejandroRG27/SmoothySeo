@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+@font-face {
+  font-family: 'SugarPieW00-Regular';
+  src: url('/static/fonts/SugarPieW00-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+   
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-bottom: none;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+    border-color: #ced4da;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.alert {
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.invalid-feedback {
+    font-size: 0.875rem;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.modal-body {
+    background-color: #ffffff;
+    padding: 2.5rem;
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    flex-direction: column;
+}
+
+.loading-gif {
+    width: 700px; 
+    height: auto;
+    border-radius: 20px;
+    box-shadow: #ffffff;
+}
+
+.loading-overlay p {
+    font-size: 2.5em; 
+    text-align: center;
+    margin-top: 1rem; 
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+    font-family: 'SugarPieW00-Regular';
+    -webkit-text-stroke: 1px #50C878;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+}
+
+.modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #ffffff;
+    border-bottom: none;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.btn-close {
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.list-group-item {
+    padding: 0.75rem 1.25rem;
+    background-color: #f8f9fa;
+    
+    border: 2px solid black;
+}

@@ -1,0 +1,77 @@
+
+.body-form-reggister {
+    background: linear-gradient(to bottom, #ffffff, #007bff, #ffffff);
+}
+
+
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #F5F6F5;
+    text-align: center;
+}
+
+/* Títulos */
+.textoh1-form {
+    padding-top: 10%;
+    font-family: 'SugarPieW00-Regular', sans-serif;
+    color: rgb(20, 106, 204);
+    -webkit-text-stroke: 2px black;
+    margin-top: 6%;
+}
+
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group .form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 14px;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.forgot-password {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.forgot-password:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 10px;
+}

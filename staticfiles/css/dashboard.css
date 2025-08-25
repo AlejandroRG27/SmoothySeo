@@ -1,0 +1,341 @@
+
+.container {
+    max-width: 1200px;
+}
+.seccion-screen-score {
+    margin-top: 2%;
+}
+
+
+
+.laptop-frame {
+    background-image: url('/static/images/frame-desktop2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    max-width: 450px;
+    height: 325px;
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 43px 10px 43px;
+}
+.laptop-frame .screen {
+    position: absolute;
+    top: 5%;
+    left: 12%;
+    width: 76%;
+    height: 79%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0);
+}
+.laptop-frame .screen img.desktop-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+.accordion-button {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.accordion-body.problem-content {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.problem-content a {
+    color: #007bff;
+    text-decoration: underline;
+}
+.problem-content a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+.problem-content p {
+    margin-bottom: 1rem;
+}
+.problem-content br {
+    display: none;
+}
+.good-header {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+}
+.neutral-header {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+}
+.bad-header {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+}
+.filter-btn {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+}
+.filter-btn.active {
+    color: white !important;
+}
+.filter-btn.active.btn-outline-success {
+    background-color: #28a745 !important;
+}
+.filter-btn.active.btn-outline-warning {
+    background-color: #ffc107 !important;
+}
+.filter-btn.active.btn-outline-danger {
+    background-color: #dc3545 !important;
+}
+.badge {
+    margin-left: 0.5rem;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    background-color: #f8f9fa;
+}
+
+h1.h4 {
+    font-size: 1.25rem;
+}
+
+.score-circle {
+    width: 80px;
+    height: 80px;
+    border: 4px solid #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffc107;
+    background: white;
+}
+
+.nav-pills .nav-link {
+    border-radius: 50rem;
+    padding: 0.25rem 1rem;
+    margin-right: 0.5rem;
+    list-style: none;
+}
+
+.nav-pills {
+    padding-top: 5%;
+}
+
+
+.mini-progress-bars {
+    width: 100%;
+}
+
+.mini-progress-bars .progress-item {
+    margin-bottom: 10px; 
+}
+
+.mini-progress-bars .progress-label {
+    display: block;
+    font-size: 0.9rem; 
+    font-weight: 500;
+    color: #333; 
+    margin-bottom: 5px; 
+}
+
+.mini-progress-bars .progress {
+    height: 20px;
+    margin-bottom: 0; 
+    background-color: #f5f5f5;
+    border-radius: 10px; 
+    overflow: hidden;
+}
+
+.mini-progress-bars .progress-bar {
+    font-size: 0;
+    padding: 0;
+    text-align: left;
+    border-radius: 10px; 
+}
+
+.mini-progress-bars .progress-bar.bg-success {
+    background-color: #28a745; 
+}
+
+.mini-progress-bars .progress-bar.bg-warning {
+    background-color: #ffc107; 
+}
+
+.mini-progress-bars .progress-bar.bg-danger {
+    background-color: #dc3545;
+}
+
+
+.nav-pills.mb-4 {
+    list-style-type: none !important; 
+}
+.nav-pills.mb-4 li {
+    list-style-type: none !important; 
+}
+
+
+.show-more-btn {
+    padding: 0;
+    color: #2980b9;
+    font-size: 0.9rem;
+}
+
+
+.list-group.list-group-flush .list-group-item {
+    border: none; 
+    padding: 0.25rem 0;
+}
+.list-group-item a {
+    word-break: break-all;
+    color: #2980b9;
+    text-decoration: underline;
+}
+.list-group-item a:hover {
+    color: #1a5276;
+    text-decoration: none;
+}
+.list-group-item img {
+    max-width: 50px; 
+    height: auto;
+    margin-right: 10px;
+}
+
+.status-icon {
+    font-size: 1.2rem;
+}
+
+.data-details p {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.data-details strong {
+    color: #333;
+}
+
+.collapse.show {
+    padding-top: 1rem;
+}
+
+
+.accordion-button {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.status-btn {
+    background-color: transparent; 
+}
+.status-btn[data-status="good"] {
+    background-color: #d4edda; 
+    color: #155724;
+}
+.status-btn[data-status="neutral"] {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.status-btn[data-status="bad"] {
+    background-color: #f8d7da; 
+    color: #721c24;
+}
+.accordion-body.problem-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+.problem-content a {
+    color: #007bff;
+    text-decoration: underline;
+}
+.problem-content a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+.problem-content p {
+    margin-bottom: 1rem;
+}
+.problem-content br {
+    display: none;
+}
+.good-header {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+}
+.neutral-header {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+}
+.bad-header {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+}
+.filter-btn {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+}
+.filter-btn.active {
+    color: white !important;
+}
+.filter-btn.active.btn-outline-success {
+    background-color: #28a745 !important;
+}
+.filter-btn.active.btn-outline-warning {
+    background-color: #ffc107 !important;
+}
+.filter-btn.active.btn-outline-danger {
+    background-color: #dc3545 !important;
+}
+.badge {
+    margin-left: 0.5rem;
+}
+
+.data-section {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.data-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+.data-list {
+    margin-bottom: 0;
+}
+.data-list dt {
+    font-weight: 600;
+    color: #34495e;
+}
+.data-list dd {
+    margin-left: 0;
+    color: #333;
+}
+.data-link {
+    color: #2980b9;
+    text-decoration: underline;
+    word-break: break-word;
+}
+.data-link:hover {
+    color: #1a5276;
+    text-decoration: none;
+}
+
+

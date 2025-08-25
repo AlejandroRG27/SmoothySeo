@@ -1,0 +1,51 @@
+.help-card {
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.help-card:hover {
+    transform: scale(1.05);
+}
+
+.card-body i {
+    color: #007bff;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.cta-section {
+    background-color: #e9ecef;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.modal-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.modal-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#modalContent ol {
+    margin-left: 20px;
+}
+#modalContent li {
+    margin-bottom: 10px;
+}
