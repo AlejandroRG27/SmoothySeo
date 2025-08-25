@@ -1,0 +1,25 @@
+{
+  "name": "djangoproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroRG27/smoothlyseo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlejandroRG27/smoothlyseo/issues"
+  },
+  "homepage": "https://github.com/AlejandroRG27/smoothlyseo#readme",
+  "dependencies": {
+    "chrome-launcher": "^1.2.0",
+    "lighthouse": "^12.6.0"
+  }
+}

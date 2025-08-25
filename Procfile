@@ -1,0 +1,1 @@
+web: gunicorn smoothlyseo.wsgi --log-file - --timeout 600
